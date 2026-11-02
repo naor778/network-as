@@ -14,7 +14,8 @@ DHCP/DNS here are teaching simulations, not implementations of their standard wi
 
 ## Run
 
-Requires Python 3 (validated with Python 3.12); no third-party packages.
+Requires Python 3.9 or newer (validated with Python 3.12); no third-party packages.
+On Windows, use `py` instead of `python3` if needed.
 From the project root, run each server in a separate terminal:
 
 ```sh
@@ -39,6 +40,14 @@ Configuration is in `config/config.json`. Defaults bind to loopback only; TCP po
 
 Both clients were exercised through DHCP/DNS discovery, listing and downloading `hello.txt` and `test.txt` against all five running services. TCP downloads matched the original bytes; RUDP downloads matched text (Python normalizes line endings). Packet-loss/delay scenarios have not been validated.
 
+Run the file-access regression tests from the project root:
+
+```sh
+python3 -m unittest discover -s tests -v
+```
+
+Five regression tests pass, covering normal downloads, missing files, parent-directory traversal, similarly named sibling directories, and external symbolic links.
+
 ## Limitations
 
-Use locally for learning. The origin server resolves requested paths and rejects access outside `app_server/files`, including symbolic links pointing outside it. Do not expose these services to an untrusted network. Additional improvements include path containment checks, malformed-message handling, timeouts for DHCP/DNS, bounded server retries and binary-safe RUDP transfers. Servers process requests sequentially. There is no authentication or encryption.
+Use locally for learning. The origin server resolves requested paths and rejects access outside `app_server/files`, including symbolic links pointing outside it. Do not expose these services to an untrusted network. Additional improvements include malformed-message handling, timeouts for DHCP/DNS, bounded server retries and binary-safe RUDP transfers. Servers process requests sequentially. There is no authentication or encryption.

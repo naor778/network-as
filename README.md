@@ -41,4 +41,4 @@ Both clients were exercised through DHCP/DNS discovery, listing and downloading 
 
 ## Limitations
 
-Use locally for learning. The origin server currently accepts parent-directory paths such as `../origin_server.py`, which can expose files outside `app_server/files`. Do not expose these services to an untrusted network. Additional improvements include path containment checks, malformed-message handling, timeouts for DHCP/DNS, bounded server retries and binary-safe RUDP transfers. Servers process requests sequentially. There is no authentication or encryption.
+Use locally for learning. The origin server resolves requested paths and rejects access outside `app_server/files`, including symbolic links pointing outside it. Do not expose these services to an untrusted network. Additional improvements include path containment checks, malformed-message handling, timeouts for DHCP/DNS, bounded server retries and binary-safe RUDP transfers. Servers process requests sequentially. There is no authentication or encryption.

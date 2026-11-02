@@ -1,0 +1,42 @@
+{
+  "dhcp_server": {
+    "ip": "127.0.0.1",
+    "port": 6767,
+    "lease_time": 120
+  },
+  "dns_server": {
+    "ip": "127.0.0.1",
+    "port": 53555,
+    "ttl": 60
+  },
+  "app_server": {
+    "ip": "127.0.0.1",
+    "port": 8080
+  },
+  "origin_server": {
+    "ip": "127.0.0.1",
+    "port": 8081
+  },
+  "network_config": {
+    "ip_pool": [
+      "10.0.0.10",
+      "10.0.0.11",
+      "10.0.0.12",
+      "10.0.0.13",
+      "10.0.0.14"
+    ],
+    "subnet_mask": "255.255.255.0",
+    "gateway": "10.0.0.1",
+    "dns_ip": "127.0.0.1"
+  },
+  "services": {
+    "files.local": {
+      "ip": "127.0.0.1",
+      "port": 8080
+    },
+    "files-rudp.local": {
+      "ip": "127.0.0.1",
+      "port": 9090
+    }
+  }
+}
